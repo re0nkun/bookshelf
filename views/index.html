@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>一覧ページ</title>
+</head>
+<body>
+  <header>
+    <h1>Bookshelf</h1>
+  </header>
+
+  <div class="wrap">
+    <div class="input">
+      <form action="/new" method="post">
+        <p>Title : 
+          <input type="text" name="title" size="30" placeholder="タイトル名">
+        </p>
+        <p>Price : 
+          <input type="text" name="price" size="30" placeholder="値段">
+        </p>
+        <p><input type="submit" value="Send"></p>
+      </form>
+    </div>
+
+    <div class="indexGet">
+      <p>本の数 : {{.num}}</p>
+      <p>合計金額 : {{.sumPrice}}</p>
+      <ul>
+        {{range.books}}
+        <li>
+          Title:{{.Title}} Price:{{.Price}}
+          <label><a href="/edit/{{.ID}}">編集</label>
+          <label><a href="/delete_confirm/{{.ID}}">削除</a>
+          </a></label>
+        </li>
+        {{end}}
+      </ul>
+    </div>
+
+  </div>
+</body>
+</html>
